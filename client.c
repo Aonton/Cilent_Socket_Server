@@ -9,6 +9,13 @@
 
 #define PORT 4444
 
+/* Amy Feng
+	April 7, 2018
+	Credit for starting the socket code goes to:
+	Nikhil Tomar
+	url: https://github.com/nikhilroxtomar/Multiple-Client-Server-Program-in-C-using-fork/blob/master/tcpServer.c
+*/
+
 int main(){
 
 	int clientSocket, ret;
