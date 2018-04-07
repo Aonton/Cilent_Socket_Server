@@ -3,7 +3,7 @@
 CC = gcc
 CFLAGS = -c
 
-all: client server executor
+all: client server
 
 server: server.o
 	$(CC) server.o -o server
