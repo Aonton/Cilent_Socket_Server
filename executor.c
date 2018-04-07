@@ -3,13 +3,13 @@
 #include <string.h>
 #include <unistd.h>
 
-void executor(int argc, char* argv[])
+void executor(command)
 {
   //first argument (argv[1]) should be the Command
   //argc[1] should be passed in quotes " " s that
   //we can have it in one index
   // Ex. ./executor "ls -l"
-  if(argc==2)
+  if(command!=NULL)
   {
     int result;
     char buffer[1024];
@@ -26,7 +26,7 @@ void executor(int argc, char* argv[])
     }
     else if(result==0)
     {
-      execl("/bin/sh", "/bin/sh", "-c", strcat(argv[1],path) , 0);
+      execl("/bin/sh", "/bin/sh", "-c", strcat(command,path) , 0);
       exit(0);
     }
     else
