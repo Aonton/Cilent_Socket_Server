@@ -6,6 +6,7 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include "executor.h" //Added
 
 #define PORT 4444
 
@@ -71,9 +72,11 @@ int main(){
 					printf("Disconnected from %s:%d\n", inet_ntoa(newAddr.sin_addr), ntohs(newAddr.sin_port));
 					break;
 				}else{
-					printf("Client: %s\n", buffer);
-					send(newSocket, buffer, strlen(buffer), 0);
-					bzero(buffer, sizeof(buffer));
+					printf("Server (command received from client): %s\n", buffer);
+					char* fromserv_response = executor(buffer);
+					send(newSocket, fromserv_response, strlen(fromserv_response), 0); //was buffer
+					//bzero(buffer, sizeof(buffer));
+					bzero(fromserv_response, sizeof(fromserv_response));
 				}
 			}
 		}

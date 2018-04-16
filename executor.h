@@ -1,0 +1,2 @@
+char* executor(char* command);
+

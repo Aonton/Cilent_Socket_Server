@@ -43,7 +43,8 @@ int main(){
 
 	while(1){
 		printf("Client: Enter Command - ");
-		scanf("%s", &buffer[0]);
+		//scanf("%s", buffer);//&buffer[0]);
+		fgets(buffer,50,stdin);
 		send(clientSocket, buffer, strlen(buffer), 0);
 
 		if(strcmp(buffer, ":exit") == 0){
@@ -55,7 +56,7 @@ int main(){
 		if(recv(clientSocket, buffer, 1024, 0) < 0){
 			printf("[-]Error in receiving data.\n");
 		}else{
-			printf("Server: \t%s\n", buffer);
+			printf("%s\n", buffer);
 		}
 	}
 

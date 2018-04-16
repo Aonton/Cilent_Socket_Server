@@ -14,13 +14,14 @@
 # remove the object files so taht you code runs with the
 # newest code changes. 
 
+CPP = g++
 CC = gcc
 CFLAGS = -c
 
 all: client server
 
 server: server.o
-	$(CC) server.o -o server
+	$(CC) server.o executor.c -o server
 client: client.o
 	$(CC) client.o -o client
 server.o: server.c
