@@ -18,6 +18,7 @@
 */
 
 int main(){
+	FILE* cmd_output;
 
 	int sockfd, ret;
 	 struct sockaddr_in serverAddr;
@@ -73,10 +74,17 @@ int main(){
 					break;
 				}else{
 					printf("Server (command received from client): %s\n", buffer);
-					char* fromserv_response = executor(buffer);
-					send(newSocket, fromserv_response, strlen(fromserv_response), 0); //was buffer
+					cmd_output = executor(buffer);
+
+					while (fgets(buffer, sizeof buffer, cmd_output) != NULL)
+					{
+						send(newSocket, buffer, strlen(buffer), 0); //was buffer
+					}
+
+
+					//send(newSocket, fromserv_response, strlen(fromserv_response), 0); //was buffer
 					//bzero(buffer, sizeof(buffer));
-					bzero(fromserv_response, sizeof(fromserv_response));
+					bzero(buffer, sizeof(buffer));
 				}
 			}
 		}
