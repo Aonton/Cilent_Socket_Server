@@ -55,8 +55,11 @@ int main(){
 
 		if(recv(clientSocket, buffer, 1024, 0) < 0){
 			printf("[-]Error in receiving data.\n");
+			bzero(buffer, sizeof(buffer));
 		}else{
+			//clearScreen();
 			printf("%s\n", buffer);
+			bzero(buffer, sizeof(buffer));
 		}
 	}
 

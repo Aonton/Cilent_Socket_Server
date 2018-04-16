@@ -81,7 +81,6 @@ int main(){
 						send(newSocket, buffer, strlen(buffer), 0); //was buffer
 					}
 
-
 					//send(newSocket, fromserv_response, strlen(fromserv_response), 0); //was buffer
 					//bzero(buffer, sizeof(buffer));
 					bzero(buffer, sizeof(buffer));

@@ -110,10 +110,10 @@ FILE* executor(char* command)
 
       // This just displays the output/error.
       // This can be remove later or kept.
-      while (fgets(buffer, sizeof buffer, cmd_output) != NULL)
-      {
-        printf("Data from command: %s\n", buffer);
-      }
+      //while (fgets(buffer, sizeof buffer, cmd_output) != NULL)
+      //{
+        //printf("Data from command: %s\n", buffer);
+      //}
 
       // parent processes must wait for the child process
       wait(&status);
