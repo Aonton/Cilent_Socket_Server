@@ -21,7 +21,7 @@ int main(){
 	FILE* cmd_output;
 
 	int sockfd, ret;
-	 struct sockaddr_in serverAddr;
+	struct sockaddr_in serverAddr;
 
 	int newSocket;
 	struct sockaddr_in newAddr;
@@ -80,6 +80,15 @@ int main(){
 					{
 						send(newSocket, buffer, strlen(buffer), 0); //was buffer
 					}
+
+
+					printf("Sending the terminating character\n");
+					bzero(buffer, sizeof(buffer));
+					buffer[0] = '\0';
+					send(newSocket, buffer, 1, 0);
+
+
+					// PASS THE FILEPOINTER
 
 					//send(newSocket, fromserv_response, strlen(fromserv_response), 0); //was buffer
 					//bzero(buffer, sizeof(buffer));

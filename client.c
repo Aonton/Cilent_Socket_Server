@@ -42,10 +42,12 @@ int main(){
 	printf("[+]Connected to Server.\n");
 
 	while(1){
-		printf("Client: Enter Command - ");
+		printf("Remote Shell$ ");
 		//scanf("%s", buffer);//&buffer[0]);
-		fgets(buffer,50,stdin);
+		fgets(buffer,100,stdin);
 		send(clientSocket, buffer, strlen(buffer), 0);
+
+		usleep(100 * 1000);
 
 		if(strcmp(buffer, ":exit") == 0){
 			close(clientSocket);
@@ -53,14 +55,47 @@ int main(){
 			exit(1);
 		}
 
-		if(recv(clientSocket, buffer, 1024, 0) < 0){
-			printf("[-]Error in receiving data.\n");
-			bzero(buffer, sizeof(buffer));
-		}else{
-			//clearScreen();
-			printf("%s\n", buffer);
-			bzero(buffer, sizeof(buffer));
+		char output[1024];
+		char output_buffer[1024];
+		int n;
+
+		n = recv(clientSocket, output_buffer, sizeof(output_buffer), 0);
+		while(n > 0) {
+
+			int stop = 0;
+
+			for (int i = 0; i <= sizeof(output_buffer); i++) {	
+				if (output_buffer[i] == '\0') {
+					strncat(output, output_buffer, n);
+					stop = 1;
+					break;
+				}
+			}
+
+
+
+			if(n > 0 && stop == 0) {
+				strncat(output, output_buffer, n);
+				n = recv(clientSocket, output_buffer, sizeof(output_buffer), 0);
+			}
+			else {
+				break;
+			}
 		}
+
+	printf("%s\n", output);
+	bzero(output, sizeof(output));
+
+
+		// if(recv(clientSocket, buffer, 1024, 0) < 0){
+		// 	printf("[-]Error in receiving data.\n");
+		// 	bzero(buffer, sizeof(buffer));
+		// }else{
+
+		// 	//clearScreen();
+		// 	printf("%s\n", buffer);
+		// 	bzero(buffer, sizeof(buffer));
+		// }
 	}
 
 	return 0;
