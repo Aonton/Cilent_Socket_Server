@@ -1,4 +1,4 @@
-# Client Socket Server
+# Remote Shell
 
 **Team Members:** Amy Feng, Kevin Ho, Saul Soto <br/>
 **Date:** 4/30/18 <br/>
