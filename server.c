@@ -6,6 +6,7 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <time.h>
 #include "executor.h" //Added
 
 #define PORT 4444
@@ -74,7 +75,34 @@ int main(){
 					break;
 				}else{
 					printf("Server (command received from client): %s\n", buffer);
-					cmd_output = executor(buffer);
+					cmd_output = (FILE *) executor(buffer);
+
+
+
+
+
+
+
+
+					// char client_receive[1];
+					// char server_send[1];
+					// server_send[0] = '`';
+
+					// recv(newSocket, client_receive, 1, 0);
+					// while(client_receive[0] != '!')
+					// {
+  			// 			send(newSocket, server_send, 1, 0); //acknowledge to client
+  			// 			recv(newSocket, client_receive, 1, 0);
+					// }
+
+					// bzero(client_receive, 1);
+					// bzero(server_send, 1);
+
+
+
+
+
+
 
 					while (fgets(buffer, sizeof buffer, cmd_output) != NULL)
 					{
@@ -82,13 +110,13 @@ int main(){
 					}
 
 
-					printf("Sending the terminating character\n");
+					// printf("Sending the terminating character\n");
 					bzero(buffer, sizeof(buffer));
 					buffer[0] = '\0';
 					send(newSocket, buffer, 1, 0);
 
 
-					// PASS THE FILEPOINTER
+
 
 					//send(newSocket, fromserv_response, strlen(fromserv_response), 0); //was buffer
 					//bzero(buffer, sizeof(buffer));
