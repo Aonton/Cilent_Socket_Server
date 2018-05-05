@@ -48,93 +48,98 @@
 */
 FILE* executor(char* command)
 {
+
   // cmd_output has the command output
-  FILE* cmd_output = NULL;
+  FILE* cmd_output;
+  for (int i = 0; i < 2; i++) {
+
+    cmd_output = NULL;
 
   // command should not be NULL
   // server code should check to make
   // sure the file pointer (return value)
   // is not null. If it is, please handle
   // it how you see fit.
-  if(command!=NULL)
-  {
+    if(command!=NULL)
+    {
     // add command to the logfile
-    FILE * logfile_fp;
-    logfile_fp = fopen("logfile.txt", "a+");
-    fputs(command, logfile_fp);
+      FILE * logfile_fp;
+      logfile_fp = fopen("logfile.txt", "a+");
 
-    int result;
-    int pipefd[2];
-    char buffer[1024];
-    int status;
+      if (i == 0) {
+        fputs(command, logfile_fp);
+      }
+
+      int result;
+      int pipefd[2];
+      char buffer[1024];
+      int status;
 
     // creating pipes
-    result = pipe(pipefd);
+      result = pipe(pipefd);
 
     // checks for pipe creation error
-    if(result<0)
-    {
-      printf("Pipe Error");
-      exit(0);
-    }
+      if(result<0)
+      {
+        printf("Pipe Error");
+        exit(0);
+      }
 
     //start forking
-    result = fork();
+      result = fork();
 
     // checks for fork creation error
-    if(result<0)
-    {
-      printf("Fork Failed\n");
-      exit(0);
-    }
+      if(result<0)
+      {
+        printf("Fork Failed\n");
+        exit(0);
+      }
     // child process
-    else if(result==0)
-    {
+      else if(result==0)
+      {
       // directing STDOUT and STDERR consoles
       // to pipes (pipefd)
-      dup2(pipefd[1], STDOUT_FILENO);
-      dup2(pipefd[1], STDERR_FILENO);
-      close(pipefd[0]);
-      close(pipefd[1]);
+        dup2(pipefd[1], STDOUT_FILENO);
+        dup2(pipefd[1], STDERR_FILENO);
+        close(pipefd[0]);
+        close(pipefd[1]);
 
       // executes the command
       // since the output and error buffers
       // have been redirected, the output will
       // not go to the console and instead go into
       // the pipes
-      execl("/bin/sh", "/bin/sh", "-c", command, 0);
-      exit(0);
-    }
+        execl("/bin/sh", "/bin/sh", "-c", command, 0);
+        exit(0);
+      }
     // parent process
-    else
-    {
-      close(pipefd[1]);
+      else
+      {
+        close(pipefd[1]);
 
       // dumping data from pipes into
       // file pointer (cmd_output)
-      cmd_output = fdopen(pipefd[0], "r");
+        cmd_output = fdopen(pipefd[0], "r");
 
-      // This just displays the output/error.
-      // This can be remove later or kept.
-
-      while (fgets(buffer, sizeof buffer, cmd_output) != NULL)
-      {
-        // printf("Data from command: %s\n", buffer);
-
+        if (i == 0) {
+          while (fgets(buffer, sizeof (buffer), cmd_output) != NULL)
+          {
         // write to a logfile
-        fputs(buffer, logfile_fp);
-      }
-      fclose(logfile_fp);
+        // fputs(buffer, cmd_output);
+            fputs(buffer, logfile_fp);
+          }
+          fclose(logfile_fp);
+        }
 
       // parent processes must wait for the child process
-      wait(&status);
+        wait(&status);
+      }
     }
+  // // Error message for null command
+  // else
+  // {
+  //   printf("No command received correctly\n");
+  // }
   }
-  // Error message for null command
-  else
-  {
-    printf("No command received correctly\n");
-  }
-
   return cmd_output;
 }

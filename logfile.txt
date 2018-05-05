@@ -1,13 +1,288 @@
-ls -l
-total 160
--rwxr-xr-x  1 Amy  staff    789 May  5 08:53 Makefile
--rw-r--r--  1 Amy  staff    453 Apr 20 08:38 README.md
--rw-r--r--  1 Amy  staff  23808 May  5 08:50 Throughput Data.xlsx
--rwxr-xr-x  1 Amy  staff   4248 Apr  6 16:25 a.out
--rwxr-xr-x  1 Amy  staff   9140 May  5 08:50 client
--rw-r--r--  1 Amy  staff   3169 May  5 08:50 client.c
--rw-r--r--  1 Amy  staff   3504 May  5 08:50 executor.c
--rw-r--r--  1 Amy  staff     32 Apr 15 21:47 executor.h
--rw-r--r--  1 Amy  staff      0 May  5 08:53 logfile.txt
--rwxr-xr-x  1 Amy  staff   9684 May  5 08:50 server
--rw-r--r--  1 Amy  staff   2829 May  5 08:50 server.c
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o
+pwd
+/Users/kevinho/Desktop/Cilent_Socket_Server-master/Cilent_Socket_Server
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o
+pwd
+/Users/kevinho/Desktop/Cilent_Socket_Server-master/Cilent_Socket_Server
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o
+pwd
+/Users/kevinho/Desktop/Cilent_Socket_Server-master/Cilent_Socket_Server
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o
+pwd
+/Users/kevinho/Desktop/Cilent_Socket_Server-master/Cilent_Socket_Server
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o
+ls
+Makefile
+README.md
+Throughput Data.xlsx
+a.out
+client
+client.c
+client.o
+executor.c
+executor.h
+logfile.txt
+server
+server.c
+server.o

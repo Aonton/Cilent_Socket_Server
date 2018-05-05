@@ -83,8 +83,6 @@ int main(){
 
 
 
-
-
 					// char client_receive[1];
 					// char server_send[1];
 					// server_send[0] = '`';
@@ -107,19 +105,15 @@ int main(){
 
 					while (fgets(buffer, sizeof buffer, cmd_output) != NULL)
 					{
-						send(newSocket, buffer, strlen(buffer), 0); //was buffer
+						send(newSocket, buffer, strlen(buffer), 0);
 					}
 
-
-					// printf("Sending the terminating character\n");
 					bzero(buffer, sizeof(buffer));
 					buffer[0] = '\0';
 					send(newSocket, buffer, 1, 0);
 
 					printf("Sent command output to client\n\n");
 
-					//send(newSocket, fromserv_response, strlen(fromserv_response), 0); //was buffer
-					//bzero(buffer, sizeof(buffer));
 					bzero(buffer, sizeof(buffer));
 				}
 			}

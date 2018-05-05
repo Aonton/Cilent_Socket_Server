@@ -48,7 +48,6 @@ int main(){
 
 	while(1){
 		printf("Remote Shell$ ");
-		//scanf("%s", buffer);//&buffer[0]);
 		fgets(buffer,100,stdin);
 		send(clientSocket, buffer, strlen(buffer), 0);
 
@@ -71,16 +70,11 @@ int main(){
 	// bzero(send_client, 1);
 	// bzero(receive_server, 1);
 
-
-
-
-
-
-
 		if(strcmp(buffer, ":exit") == 0){
 			close(clientSocket);
 			printf("[-]Disconnected from server.\n");
 			exit(1);
+			break;
 		}
 
 		char output[1024];
@@ -101,8 +95,6 @@ int main(){
 				}
 			}
 
-
-
 			if(n > 0 && stop == 0) {
 				strncat(output, output_buffer, n);
 				n = recv(clientSocket, output_buffer, sizeof(output_buffer), 0);
@@ -112,7 +104,6 @@ int main(){
 				break;
 			}
 		}
-
 
 	end = clock(); // End the process timer
 	cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC * 1000; // Convert from seconds to milliseconds
@@ -130,7 +121,7 @@ int main(){
 		// }else{
 
 		// 	//clearScreen();
-		// 	printf("%s\n", buffer);
+		// printf("%s\n", buffer);
 		// 	bzero(buffer, sizeof(buffer));
 		// }
 }
