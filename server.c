@@ -74,7 +74,8 @@ int main(){
 					printf("Disconnected from %s:%d\n", inet_ntoa(newAddr.sin_addr), ntohs(newAddr.sin_port));
 					break;
 				}else{
-					printf("Server (command received from client): %s\n", buffer);
+					printf("Command received from client: %s", buffer);
+					printf("Executing command...\n");
 					cmd_output = (FILE *) executor(buffer);
 
 
@@ -115,8 +116,7 @@ int main(){
 					buffer[0] = '\0';
 					send(newSocket, buffer, 1, 0);
 
-
-
+					printf("Sent command output to client\n\n");
 
 					//send(newSocket, fromserv_response, strlen(fromserv_response), 0); //was buffer
 					//bzero(buffer, sizeof(buffer));
