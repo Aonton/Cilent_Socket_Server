@@ -30,3 +30,4 @@ client.o: client.c
 	$(CC) $(CFLAGS) client.c
 clean:
 	rm -rf *.o
+	rm logfile.txt
