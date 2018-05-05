@@ -19,10 +19,9 @@
 
 int main(){
 
-
-clock_t start, end;
-double cpu_time_used;
-int total_bits;
+	clock_t start, end;
+	double cpu_time_used;
+	int total_bits;
 
 	int clientSocket, ret;
 	struct sockaddr_in serverAddr;
@@ -134,7 +133,7 @@ int total_bits;
 		// 	printf("%s\n", buffer);
 		// 	bzero(buffer, sizeof(buffer));
 		// }
-	}
+}
 
-	return 0;
+return 0;
 }

@@ -58,6 +58,11 @@ FILE* executor(char* command)
   // it how you see fit.
   if(command!=NULL)
   {
+    // add command to the logfile
+    FILE * logfile_fp;
+    logfile_fp = fopen("logfile.txt", "a+");
+    fputs(command, logfile_fp);
+
     int result;
     int pipefd[2];
     char buffer[1024];
@@ -111,10 +116,15 @@ FILE* executor(char* command)
 
       // This just displays the output/error.
       // This can be remove later or kept.
-      //while (fgets(buffer, sizeof buffer, cmd_output) != NULL)
-      //{
-        //printf("Data from command: %s\n", buffer);
-      //}
+
+      while (fgets(buffer, sizeof buffer, cmd_output) != NULL)
+      {
+        // printf("Data from command: %s\n", buffer);
+
+        // write to a logfile
+        fputs(buffer, logfile_fp);
+      }
+      fclose(logfile_fp);
 
       // parent processes must wait for the child process
       wait(&status);
