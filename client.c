@@ -70,7 +70,7 @@ int main(){
 	// bzero(send_client, 1);
 	// bzero(receive_server, 1);
 
-		if(strcmp(buffer, ":exit") == 0){
+		if(strcmp(buffer, ":exit\n") == 0){
 			close(clientSocket);
 			printf("[-]Disconnected from server.\n");
 			exit(1);
