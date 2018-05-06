@@ -19,28 +19,6 @@
 	url: https://github.com/nikhilroxtomar/Multiple-Client-Server-Program-in-C-using-fork/blob/master/tcpServer.c
 */
 
-struct ClientInput
-{
-	char port[1024];
-	char host[1024];
-	char command[1024];
-};
-
-struct ClientInput ParseClientInput(struct ClientInput clientInput, char buffer[])
-{
-	char* result; 
-	char* tempCommand;
-	tempCommand = strtok(buffer,"\"");
-	strcpy(&clientInput.command[0],tempCommand);
-
-	strtok(NULL," ");
-	strcpy(&clientInput.host[0],strtok(NULL," "));
-	strtok(NULL," ");
-	strcpy(&clientInput.port[0],strtok(NULL," "));
-
-	return clientInput;
-}
-
 int main(){
 	FILE* cmd_output;
 
@@ -81,8 +59,6 @@ int main(){
 		printf("[-]Error in binding.\n");
 	}
 
-	struct ClientInput clientInput;
-
 
 	while(1){
 		newSocket = accept(sockfd, (struct sockaddr*)&newAddr, &addr_size);
@@ -96,32 +72,24 @@ int main(){
 
 			while(1){
 				recv(newSocket, buffer, 1024, 0);
-
 				if(waitingForPassword)
 				{
 					printf("Password Received\n");
 				}
-				else
-				{
-					if(strcmp(buffer, ":exit\n") == 0){
-						printf("Disconnected from %s:%d\n", inet_ntoa(newAddr.sin_addr), ntohs(newAddr.sin_port));
-						break;
-					}					
-					clientInput = ParseClientInput(clientInput,buffer);
-				}
 
-				if((strcmp(buffer, "Welcome123") == 0) && waitingForPassword)
+				if(strcmp(buffer, ":exit\n") == 0){
+					printf("Disconnected from %s:%d\n", inet_ntoa(newAddr.sin_addr), ntohs(newAddr.sin_port));
+					break;
+				}
+				else if((strcmp(buffer, "Welcome123") == 0) && waitingForPassword)
 				{
 					printf("Password okay\n");
 					waitingForPassword = false;
 				}
 				else{
-
-
-
-					printf("Command received from client: %s\n", clientInput.command);
+					printf("Command received from client: %s", buffer);
 					printf("Executing command...\n");
-					cmd_output = (FILE *) executor(strcat(clientInput.command,"\n"));
+					cmd_output = (FILE *) executor(buffer);
 
 
 
