@@ -26,6 +26,7 @@ int main(){
 	int clientSocket, ret;
 	struct sockaddr_in serverAddr;
 	char buffer[1024];
+	char password[11] = "Welcome123";
 
 	clientSocket = socket(AF_INET, SOCK_STREAM, 0);
 	if(clientSocket < 0){
@@ -45,6 +46,8 @@ int main(){
 		exit(1);
 	}
 	printf("[+]Connected to Server.\n");
+
+	send(clientSocket, password, strlen(password), 0);
 
 	while(1){
 		printf("Remote Shell$ ");

