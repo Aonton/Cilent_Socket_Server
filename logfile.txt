@@ -336,3 +336,40 @@ total 192
 -rw-r--r--  1 Amy  staff   2917 May  5 23:45 server.c
 -rw-r--r--  1 Amy  staff   3052 May  5 23:45 server.o
 Welcome123/bin/sh: Welcome123: command not found
+cat Makefile
+# Make File for Server & Client Project
+# Amy Feng
+# April 7, 2018
+# How to use this make file
+# OPTION:
+# 1) type "make all" on the command line
+# Purpose: This will build/compile the server.c
+# and client.c files. Then to run the programs,
+# run their executables.
+# ./server and ./client
+# *** Note: You must start the server before the client ***
+# 2) type "make clean"
+# Purpose: removes object files. Sometimes it is needed to
+# remove the object files so taht you code runs with the
+# newest code changes. 
+
+CPP = g++
+CC = gcc
+CFLAGS = -c
+
+all: client server
+
+server: server.o
+	$(CC) server.o executor.c -o server
+client: client.o
+	$(CC) client.o -o client
+server.o: server.c
+	$(CC) $(CFLAGS) server.c
+client.o: client.c
+	$(CC) $(CFLAGS) client.c
+clean:
+	rm -rf *.o
+	rm logfile.txt
+:exit
+e123/bin/sh: :exit: command not found
+/bin/sh: line 1: e123: command not found

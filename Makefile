@@ -11,7 +11,7 @@
 # *** Note: You must start the server before the client ***
 # 2) type "make clean"
 # Purpose: removes object files. Sometimes it is needed to
-# remove the object files so taht you code runs with the
+# remove the object files so that you code runs with the
 # newest code changes. 
 
 CPP = g++
